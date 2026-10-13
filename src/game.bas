@@ -60,7 +60,7 @@
 520 print hm$;left$(cu$,11);spc(16);int(f(2));chr$(157);" ";
 530 print hm$;left$(cu$,14);spc(16);int(f(7));chr$(157);" ";
 540 print hm$;left$(cu$,17);spc(16);mid$("nesw.",nf,1);
-550 print hm$;left$(cu$,20);spc(16);int(f(5));" ";
+550 print hm$;left$(cu$,20);spc(16);int(f(5));
 560 return
 
 570 print bg$(1);
@@ -321,7 +321,6 @@ rem load dungeon
 2810 print c$;left$(b$,w-len(c$));
 2820 print bg$(2);
 2830 for i=1 to 5:print left$(b$,w);:next i
-2835 print bg$(1);:print bg$(0);
 2840 print bg$(1);chr$(144);
 2850 for i=1 to 15:print hm$;left$(cu$,5+i);spc(1);left$(b$,15);:next i
 2860 print bg$(1);
