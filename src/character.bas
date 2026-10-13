@@ -60,7 +60,7 @@ rem Save character
 530 open 1,1,1,"hero"
 540 print#1,s$
 550 close 1
-560 stop
+560 end
 
 570 m$="":gosub 860
 580 print hm$;left$(cu$, 2);spc(2);"your offer";
