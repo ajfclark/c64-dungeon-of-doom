@@ -136,13 +136,14 @@
 1190 if rh=c0 then r(nx,ny)=c7
 1200 j=100: gosub 350: j=200: gosub 350
 1210 return
-1220 nx=int(rnd(1)*13+1):ny=int(rnd(13)*b+1)
+
+1220 nx=int(rnd(1)*13+1):ny=int(rnd(1)*13+1)
 1230 for j=0 to 255 step 8
 1240 gosub 360: gosub 350
 1250 next j
 1260 gosub 480
 1270 return
-1280 f(2)=f(2)+int(rnd(1)*m(sl)+1):f(1)=f(1)+int(rnd(m(sl))*b+1):f(7)=f(7)-1
+1280 f(2)=f(2)+int(rnd(1)*m(sl)+1):f(1)=f(1)+int(rnd(1)*m(sl)+1):f(7)=f(7)-1
 1290 return
 
 1300 for j=1 to 30
@@ -154,8 +155,10 @@
 1360 gosub 350
 1370 next j
 1380 return
+
 1390 f(2)=s2:f(1)=s1:f(7)=f(7)-1
 1400 return
+
 1410 gx=nx+d(nf,1):gy=ny+d(nf,2)
 1420 if gx<0 then gx=0
 1430 if gy<0 then gy=0
