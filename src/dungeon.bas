@@ -50,8 +50,8 @@ rem print help
 380 print hm$;left$(cu$, 4);spc(1);h$(h);:gosub 430
 390 print hm$;left$(cu$, 4);spc(1);left$(b$,w-2);
 400 next h
-410 rem leave out this line
 420 return
+
 rem press any key
 430 get g$:if g$="" then goto 430
 440 return
