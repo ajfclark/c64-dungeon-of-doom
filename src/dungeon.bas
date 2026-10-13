@@ -6,7 +6,7 @@
 rem start level
 20 print chr$(147):poke 53280,0:poke 53281,0
 30 bg=2:fg=1:t=0:l=3:lw=w-3:gosub 280
-40 print bg$(0);:print bg$(2);
+40 print bg$(2);
 50 print hm$;left$(cu$, 1);spc(1);"level generator";
 60 print hm$;left$(cu$, 2);spc(1);"this is level:";le;
 70 print hm$;left$(cu$, 3);spc(1);"press h for help"
@@ -20,7 +20,7 @@ rem start level
 140 if i$="n" and x>1 then x=x-1
 150 if i$="m" and x<15 then x=x+1
 160 if i$>"/" and i$<":" then gosub 230
-170 print bg$(0);:print bg$(3);
+170 print bg$(3);
 180 print hm$;left$(cu$, y+5);spc(x);chr$(os);
 190 print hm$;left$(cu$, y+5);spc(x);chr$(r(x,y));
 200 if i$="s" and ix>0 then gosub 450:goto 20
@@ -36,12 +36,12 @@ rem store input
 
 rem draw box
 280 print hm$;left$(cu$,t);spc(0);
-290 print bg$(fg);:print left$(b$, lw+2)
-300 print bg$(fg);:print bg$(bg);
+290 print bg$(fg);left$(b$,lw+2)
+300 print bg$(bg)
 310 for i=1 to l
 320 print bg$(fg);" ";bg$(bg);left$(b$,lw);bg$(fg);" "
 330 next i
-340 print bg$(fg);:print left$(b$, lw+2);
+340 print bg$(fg);left$(b$,lw+2);
 350 return
 
 rem print help
