@@ -25,7 +25,7 @@ rem start level
 190 print hm$;left$(cu$, y+5);spc(x);chr$(r(x,y));
 200 if i$="s" and ix>0 then gosub 450:goto 20
 210 if i$<>"f" then goto 100
-220 stop
+220 end
 
 rem store input
 230 i=val(i$)
