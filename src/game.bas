@@ -115,7 +115,7 @@
 1000 print hm$;left$(cu$,1);spc(0);"you may use magicks";
 1010 if o(17)>0 then print hm$;left$(cu$,2);spc(0);"from necronomicon";
 1020 if o(18)>0 then print hm$;left$(cu$,3);spc(0);"from the scrolls";
-1030 print hm$;left$(cu$,0);spc(4);"consult the lore";
+1030 print hm$;left$(cu$,4);spc(0);"consult the lore";
 1040 m$="use spell number?": gosub 370
 1050 sl=val(i$)
 1060 if sl=0 or (o(17)=0 and sl<5) or (o(18)=0 and sl>3) or sl>6 then goto 1040
