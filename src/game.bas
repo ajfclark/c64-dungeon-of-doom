@@ -200,7 +200,7 @@
 
 rem load dungeon
 1760 if f(5)<s3+1 then m$=t$(11):nx=ox:ny=oy:gosub 430: return
-1770 print chr$(147):print hm$;left$(cu$,3);spc(0);"prepare dungeon tape"
+1770 print chr$(147);hm$;left$(cu$,3);spc(0);"prepare dungeon tape"
 1780 m$=t$(10): gosub 370
 1790 open 1,1,0,"level"
 1795 s$="":for i=1 to 3
@@ -228,7 +228,7 @@ rem load dungeon
 1990 print "for level";f(5)
 2000 return
 
-2010 print chr$(147):print hm$;left$(cu$,3);spc(0);"prepare hero tape"
+2010 print chr$(147);hm$;left$(cu$,3);spc(0);"prepare hero tape"
 2020 m$=t$(10): gosub 370
 2025 x=rnd(-ti)
 2030 open 1,1,0,"hero"
