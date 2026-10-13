@@ -1,4 +1,5 @@
 1   rem character creator
+5   x=rnd(-ti)
 10  gosub 1060
 20  print chr$(147)
 25  poke 53280,0:poke 53281,0
