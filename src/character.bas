@@ -152,7 +152,7 @@ rem Save character
 1370 next i
 1380 data "strength","vitality","agility","intelligence"
 1390 data "experience","luck","aura","morality","character creation"
-1400 data "2 hand sword", "boardsword", "shortsword"
+1400 data "2 hand sword","broadsword","shortsword"
 1410 data "axe","mace","flail","dagger","gauntlet","armoury"
 1420 data "heavy armour","chain armour","leather armour","heavy robe"
 1430 data "gold helmet","headpiece","shield","torch","accoutrements"
