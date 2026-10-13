@@ -41,7 +41,7 @@ rem The shoppe
 
 rem Save character
 360 print hm$;left$(cu$,2);spc(1);"name thy character";
-370 print hm$;left$(cu$,3);spc(1);left$(b$,w-2);:print hm$;left$(cu$,3);spc(1);
+370 print hm$;left$(cu$,3);spc(1);left$(b$,w-2);hm$;left$(cu$,3);spc(1);
 380 x=1:y=3:gosub 1700:n$=in$
 390 if len(n$)>10 then goto 360
 400 print hm$;left$(cu$,3);spc(1);"one moment please";
@@ -89,12 +89,12 @@ rem Save character
 790 print hm$;left$(cu$,p);spc(1);">";
 800 return
 
-810 print bg$(2);:print bg$(0);
+810 print bg$(2);bg$(0);
 820 print hm$;left$(cu$,0);spc(0);left$(b$,w);
 830 print hm$;left$(cu$,0);spc(0);f$(j,9)
 840 bg=2:fg=3:t=1:l=2
 850 gosub 980
-860 print bg$(0);:print bg$(2);
+860 print bg$(0);bg$(2);
 870 print hm$;left$(cu$,2);spc(2);left$(b$,17);hm$;left$(cu$,2);spc(2);m$;
 875 print hm$;left$(cu$,3);spc(15);left$(b$,4);
 880 print hm$;left$(cu$,3);spc(2);h$;hm$;left$(cu$,3);spc(15);h;" ";
