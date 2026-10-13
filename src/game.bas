@@ -196,7 +196,7 @@
 
 1700 for y=ny-3 to ny+3
 1710 for x=nx-3 to nx+3
-1720 for (x>0 and x<16) and (y>0 and y<16) then gosub 570
+1720 if (x>0 and x<16) and (y>0 and y<16)then gosub 570
 1730 next x: next y
 1740 lt=lt-1
 1750 return
