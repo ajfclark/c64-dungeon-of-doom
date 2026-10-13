@@ -230,6 +230,7 @@ rem load dungeon
 
 2010 print chr$(147):print hm$;left$(cu$,3);spc(0);"prepare hero tape"
 2020 m$=t$(10): gosub 370
+2025 x=rnd(-ti)
 2030 open 1,1,0,"hero"
 2040 input#1,s$
 2050 close 1
