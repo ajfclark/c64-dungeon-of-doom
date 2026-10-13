@@ -183,8 +183,7 @@
 1600 for n=1 to 4: nf=n: gosub 480: next n
 1610 next i
 1620 ms=0
-1630 print hm$;left$(cu$,2);spc(1);
-1635 print "thy score=";int((tr*10)+(gc*f(5))+f(1)+f(2)+f(3))
+1630 print hm$;left$(cu$,2);spc(1);"thy score=";int((tr*10)+(gc*f(5))+f(1)+f(2)+f(3))
 1640 fi=1
 1650 return
 
