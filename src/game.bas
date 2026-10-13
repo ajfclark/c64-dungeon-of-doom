@@ -30,7 +30,7 @@
 280 if ox<>nx or oy<>ny then x=ox:y=oy:gosub 570
 290 ox=nx:oy=ny
 300 if dx<255 then gosub 620
-310 if f(1)>0 and fi<1 and rh<>c5 then gosub 40
+310 if f(1)>0 and fi<1 and rh<>c5 then goto 40
 320 if rh=c5 then m$=t$(12):gosub 430: gosub 1760: goto 40
 330 if f(1)<1 then gosub 810
 340 print hm$;left$(cu$,10);spc(0);:stop
@@ -83,7 +83,7 @@
 730 i=1:wb=0:mb=int(rnd(1)*m+1)
 740 j=mt:gosub 350:gosub 360
 750 if mb=1 and o(i)>0 then gosub 780
-760 if i<11 then i=i+1:gosub 750
+760 if i<11 then i=i+1:goto 750
 770 return
 
 780 o(i)=0:m$=t$(8)+" "+w$(i):gosub 430
