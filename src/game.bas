@@ -75,7 +75,7 @@
 650 r(lx,ly)=c0:x=lx:y=ly:gosub 570
 660 r(mx,my)=mt:x=mx:y=my:gosub 570
 670 lx=mx:ly=my:h=0
-680 if abx(dx)<=1 and abs(dy)<=1 and rh<>c7 then h=m*0.5:j=h:gosub 350
+680 if abs(dx)<=1 and abs(dy)<=1 and rh<>c7 then h=m*0.5:j=h:gosub 350
 690 if h*12<f(6)+f(3) then return
 700 m$=t$(5):gosub 430:gosub 360
 710 h=h/(3+o(9) + o(10) + o(11) + o(12) + o(13) + o(14))
