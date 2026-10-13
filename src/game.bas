@@ -49,7 +49,7 @@
 
 430 print bg$(2);
 440 print hm$;left$(cu$,5);spc(0);m$;
-450 for d=1 to 200: next d
+450 for d=1 to 600:next d
 460 print hm$;left$(cu$,5);spc(0);left$(b$,w);:m$=""
 470 return
 
