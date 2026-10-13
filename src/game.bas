@@ -30,25 +30,29 @@
 280 if ox<>nx or oy<>ny then x=ox:y=oy:gosub 570
 290 ox=nx:oy=ny
 300 if dx<255 then gosub 620
-310 if f(1)>0 and fi<1 and rh<>c5 then gosub 40
+310 if f(1)>0 and fi<1 and rh<>c5 then goto 40
 320 if rh=c5 then m$=t$(12):gosub 430: gosub 1760: goto 40
 330 if f(1)<1 then gosub 810
 340 print hm$;left$(cu$,10);spc(0);:stop
 350 poke vs+1,j:poke vs+4,33
 355 poke vs+4,32:return
+
 360 poke vs+8,j:poke vs+11,129
 365 poke vs+11,128:return
+
 370 print bg$(2);
 380 print hm$;left$(cu$,5);spc(0);m$;
 390 get i$
 400 if i$="" then goto 390
 410 print hm$;left$(cu$,5);spc(0);left$(b$,w);:m$=""
 420 return
+
 430 print bg$(2);
 440 print hm$;left$(cu$,5);spc(0);m$;
-450 for d=1 to 200: next d
+450 for d=1 to 600:next d
 460 print hm$;left$(cu$,5);spc(0);left$(b$,w);:m$=""
 470 return
+
 480 print bg$(1);
 490 print hm$;left$(cu$,ny+5);spc(nx);mid$(f$,nf,1);
 500 print bg$(1);
@@ -56,20 +60,22 @@
 520 print hm$;left$(cu$,11);spc(16);int(f(2));chr$(157);" ";
 530 print hm$;left$(cu$,14);spc(16);int(f(7));chr$(157);" ";
 540 print hm$;left$(cu$,17);spc(16);mid$("nesw.",nf,1);
-550 print hm$;left$(cu$,20);spc(16);int(f(5));" ";
+550 print hm$;left$(cu$,20);spc(16);int(f(5));
 560 return
+
 570 print bg$(1);
 580 rm=r(x,y):print hm$;left$(cu$,y+5);spc(x);chr$(rm);
 590 if abs(dx)<4 or rm<=c7 then return
 600 mt=rm:m=mt-c2:mv=m/16:ms=m*6:dx=3:lx=x:ly=y
 610 return
+
 620 dx=lx-nx:sx=sgn(dx):dy=ly-ny:sy=sgn(dy)
 630 mx=lx-(mv*sx):my=ly-(mv*sy):rm=r(mx,my)
 640 if rm>c0 and rm<>mt then my=ly:mx=lx
 650 r(lx,ly)=c0:x=lx:y=ly:gosub 570
 660 r(mx,my)=mt:x=mx:y=my:gosub 570
 670 lx=mx:ly=my:h=0
-680 if abx(dx)<=1 and abs(dy)<=1 and rh<>c7 then h=m*0.5:j=h:gosub 350
+680 if abs(dx)<=1 and abs(dy)<=1 and rh<>c7 then h=m*0.5:j=h:gosub 350
 690 if h*12<f(6)+f(3) then return
 700 m$=t$(5):gosub 430:gosub 360
 710 h=h/(3+o(9) + o(10) + o(11) + o(12) + o(13) + o(14))
@@ -77,17 +83,20 @@
 730 i=1:wb=0:mb=int(rnd(1)*m+1)
 740 j=mt:gosub 350:gosub 360
 750 if mb=1 and o(i)>0 then gosub 780
-760 if i<11 then i=i+1:gosub 750
+760 if i<11 then i=i+1:goto 750
 770 return
+
 780 o(i)=0:m$=t$(8)+" "+w$(i):gosub 430
 790 mb=0:gosub 360:j=i:gosub 350
 800 return
+
 810 nf=5:f(1)=0:gosub 440
-820 print hm$;left$(cu$,5);spc(1);"thou has expired!";
+820 print hm$;left$(cu$,5);spc(1);"thou hast expired!";
 830 for j=150 to 1 step -4
 840 gosub 350: gosub 360: gosub 570: gosub 480
 850 next j
 860 return
+
 870 m$=t$(int(rnd(1)*3+1)):gosub 360
 880 h=f(1)+o(1)+o(2)+o(3)+o(4)+o(5)+o(7)+o(8)+int(rnd(1)*f(6)+1)
 890 if f(3)+f(6)<int(rnd(1)*m+1)+2 then m$=t$(4):ht=0
@@ -95,16 +104,18 @@
 910 f(1)=f(1)-(h/100):f(5)=f(5)+0.05
 920 if ms<1 then gosub 940
 930 return
+
 940 dx=255:ms=0:r(mx,my)=c0
 950 f(5)=f(5)+0.1
 960 m$=t$(6):gosub 430
 970 for j=200 to 150 step -8: gosub 350: gosub 360: next j
 980 gosub 570: return
+
 990 gosub 480: print bg$(2);
 1000 print hm$;left$(cu$,1);spc(0);"you may use magicks";
 1010 if o(17)>0 then print hm$;left$(cu$,2);spc(0);"from necronomicon";
 1020 if o(18)>0 then print hm$;left$(cu$,3);spc(0);"from the scrolls";
-1030 print hm$;left$(cu$,0);spc(4);"consult the lore";
+1030 print hm$;left$(cu$,4);spc(0);"consult the lore";
 1040 m$="use spell number?": gosub 370
 1050 sl=val(i$)
 1060 if sl=0 or (o(17)=0 and sl<5) or (o(18)=0 and sl>3) or sl>6 then goto 1040
@@ -116,6 +127,7 @@
 1110 f(5)=f(5)+0.2
 1120 gosub 430
 1130 return
+
 1140 for j=1 to 12
 1150 gosub 350: gosub 360
 1160 next j
@@ -124,14 +136,16 @@
 1190 if rh=c0 then r(nx,ny)=c7
 1200 j=100: gosub 350: j=200: gosub 350
 1210 return
-1220 nx=int(rnd(1)*13+1):ny=int(rnd(13)*b+1)
+
+1220 nx=int(rnd(1)*13+1):ny=int(rnd(1)*13+1)
 1230 for j=0 to 255 step 8
 1240 gosub 360: gosub 350
 1250 next j
 1260 gosub 480
 1270 return
-1280 f(2)=f(2)+int(rnd(1)*m(sl)+1):f(1)=f(1)+int(rnd(m(sl))*b+1):f(7)=f(7)-1
+1280 f(2)=f(2)+int(rnd(1)*m(sl)+1):f(1)=f(1)+int(rnd(1)*m(sl)+1):f(7)=f(7)-1
 1290 return
+
 1300 for j=1 to 30
 1310 r(nx,ny)=int(rnd(1)*8+1)+1+c0
 1320 gosub 350: gosub 570
@@ -141,8 +155,10 @@
 1360 gosub 350
 1370 next j
 1380 return
+
 1390 f(2)=s2:f(1)=s1:f(7)=f(7)-1
 1400 return
+
 1410 gx=nx+d(nf,1):gy=ny+d(nf,2)
 1420 if gx<0 then gx=0
 1430 if gy<0 then gy=0
@@ -155,8 +171,10 @@
 1500 x=gx:y=gy: gosub 570
 1510 if gt>c1 and gt<c4 then j=gt: gosub 350: j=gt+5: gosub 350
 1520 return
+
 1530 j=o(24)+o(23)*10:gosub 350
 1540 return
+
 1550 print bg$(2);
 1560 print hm$;left$(cu$,1);spc(0);" thy quest is over! ";
 1570 for i=1 to 18
@@ -165,22 +183,26 @@
 1600 for n=1 to 4: nf=n: gosub 480: next n
 1610 next i
 1620 ms=0
-1630 print hm$;left$(cu$,2);spc(1);
-1635 print "thy score=";int((tr*10)+(gc*f(5))+f(1)+f(2)+f(3))
+1630 print hm$;left$(cu$,2);spc(1);"thy score=";int((tr*10)+(gc*f(5))+f(1)+f(2)+f(3))
 1640 fi=1
 1650 return
+
 1660 if o(24)>0 and f(1)<s1 then f(1)=s1:o(24)=o(24)-1
 1670 if o(23)>0 and f(2)<s2 then f(2)=s2:o(23)=o(23)-1
 1680 return
+
 1690 if lt=0 then m$=t$(7): gosub 430: return
+
 1700 for y=ny-3 to ny+3
 1710 for x=nx-3 to nx+3
-1720 for (x>0 and x<16) and (y>0 and y<16) then gosub 570
+1720 if (x>0 and x<16) and (y>0 and y<16)then gosub 570
 1730 next x: next y
 1740 lt=lt-1
 1750 return
+
+rem load dungeon
 1760 if f(5)<s3+1 then m$=t$(11):nx=ox:ny=oy:gosub 430: return
-1770 print chr$(147):print hm$;left$(cu$,3);spc(0);"prepare dungeon tape"
+1770 print chr$(147);hm$;left$(cu$,3);spc(0);"prepare dungeon tape"
 1780 m$=t$(10): gosub 370
 1790 open 1,1,0,"level"
 1795 s$="":for i=1 to 3
@@ -201,13 +223,16 @@
 1930 gosub 2790
 1940 nx=ix:ny=iy:ox=nx:oy=ny:dx=255
 1950 return
+
 1960 print:print"level too deep"
 1970 print "rewind tape"
 1980 print "to position"
 1990 print "for level";f(5)
 2000 return
-2010 print chr$(147):print hm$;left$(cu$,3);spc(0);"prepare hero tape"
+
+2010 print chr$(147);hm$;left$(cu$,3);spc(0);"prepare hero tape"
 2020 m$=t$(10): gosub 370
+2025 x=rnd(-ti)
 2030 open 1,1,0,"hero"
 2040 input#1,s$
 2050 close 1
@@ -231,6 +256,7 @@
 2230 next j: next i
 2240 if o(16)=1 then lt=20
 2250 return
+
 2260 m$="one moment please": gosub 430
 2270 s$="":t$=""
 2280 for y=1 to 15
@@ -257,6 +283,7 @@
 2475 next i:close 1
 2480 fi=1
 2490 return
+
 2500 c$="role playing game":b$=""
 2510 w=40: os=96
 2520 for i=1 to w:b$=b$+" ":next i
@@ -286,6 +313,7 @@
 2760 data 69,117,73,121,81,129,69,117,73,121,81,129,89,137,97,145,101,149
 2770 for i=1 to 18:read t(i):next i: gosub 2930
 2780 return
+
 2790 poke 53280,0:poke 53281,1:print bg$(1);
 2795 print chr$(147);:for i=0 to 998:print chr$(32);:next i
 2797 poke 33767,160:poke 56295,2
@@ -293,7 +321,6 @@
 2810 print c$;left$(b$,w-len(c$));
 2820 print bg$(2);
 2830 for i=1 to 5:print left$(b$,w);:next i
-2835 print bg$(1);:print bg$(0);
 2840 print bg$(1);chr$(144);
 2850 for i=1 to 15:print hm$;left$(cu$,5+i);spc(1);left$(b$,15);:next i
 2860 print bg$(1);
@@ -303,6 +330,7 @@
 2900 print hm$;left$(cu$,16);spc(16);"face";
 2910 print hm$;left$(cu$,19);spc(16);"exp";
 2920 return
+
 2930 rem *** user def'd characters ***
 2940 gosub 4000
 2950 for i=0 to 143:read a: poke 36352+i,255-a:next i
@@ -315,6 +343,8 @@
 3180 c1=c0+1:c2=c0+2:c3=c0+3:c4=c0+4
 3190 c5=c0+6:c6=c0+7:c7=c0+8:c8=c0+12
 3200 return
+
+rem character data
 3500 data 255,255,255,255,255,255,255,255
 3510 data 56,56,16,56,84,16,40,68
 3520 data 28,28,8,30,40,40,20,18
@@ -333,10 +363,14 @@
 3650 data 76,158,170,190,84,30,37,88
 3660 data 0,56,84,124,56,44,68,102
 3670 data 0,8,28,42,127,85,65,34
+
+rem setup
 4000 bg$(0)=chr$(146):bg$(1)=chr$(18)+chr$(28)
 4010 bg$(2)=chr$(18)+chr$(31):bg$(3)=chr$(18)+chr$(5)
 4020 hm$=chr$(19):cu$="":for i=1 to w:cu$=cu$+chr$(17):next i
 4030 poke 650,255:return
+
+rem graphics mode
 5000 poke 52,128:poke 56,128
 5010 poke 56334,peek(56334) and 254:poke 1,peek(1) and 251
 5020 for i=0 to 2047:poke 34816+i,peek(53248+i):next i

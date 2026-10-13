@@ -1,4 +1,5 @@
 1   rem character creator
+5   x=rnd(-ti)
 10  gosub 1060
 20  print chr$(147)
 25  poke 53280,0:poke 53281,0
@@ -18,6 +19,8 @@
 160 m$=c$(c)
 170 gosub 860
 180 if i$<>" " then goto 70
+
+rem The shoppe
 190 h=gc:h$="gold coins:"
 200 for j=2 to 4
 210 k=1:p=t+1
@@ -35,8 +38,10 @@
 330 gosub 860
 340 if i$ <>" " then goto 260
 350 next j
+
+rem Save character
 360 print hm$;left$(cu$,2);spc(1);"name thy character";
-370 print hm$;left$(cu$,3);spc(1);left$(b$,w-2);:print hm$;left$(cu$,3);spc(1);
+370 print hm$;left$(cu$,3);spc(1);left$(b$,w-2);hm$;left$(cu$,3);spc(1);
 380 x=1:y=3:gosub 1700:n$=in$
 390 if len(n$)>10 then goto 360
 400 print hm$;left$(cu$,3);spc(1);"one moment please";
@@ -55,7 +60,8 @@
 530 open 1,1,1,"hero"
 540 print#1,s$
 550 close 1
-560 stop
+560 end
+
 570 m$="":gosub 860
 580 print hm$;left$(cu$, 2);spc(2);"your offer";
 590 x=14:y=2:gosub 1700:of=val(in$)
@@ -63,14 +69,16 @@
 610 if o(n)>0 and n<23 then m$="you have it sire":return
 620 pr=f(j,k)-br
 630 if h<pr then m$="you cannot afford":return
-640 if of>=pr and y=1 then o(n)=o(n)+p(n):h=h-pr:m$="tis yours'"
+640 if of>=pr and y=1 then o(n)=o(n)+p(n):h=h-pr:m$="tis yours!"
 650 if of<pr and y=1 then m$="offer rejected"
 660 if h<0 then h=0
 670 return
+
 680 y=0
 690 if mid$(o$(n),c,1)="1" then y=1
 700 if y=0 then m$="not for "+c$(c)
 710 return
+
 720 get i$
 730 if i$="" then goto 720
 740 print bg$(3);
@@ -80,16 +88,18 @@
 780 p=k*2+t-1
 790 print hm$;left$(cu$,p);spc(1);">";
 800 return
-810 print bg$(2);:print bg$(0);
+
+810 print bg$(2);bg$(0);
 820 print hm$;left$(cu$,0);spc(0);left$(b$,w);
 830 print hm$;left$(cu$,0);spc(0);f$(j,9)
 840 bg=2:fg=3:t=1:l=2
 850 gosub 980
-860 print bg$(0);:print bg$(2);
+860 print bg$(0);bg$(2);
 870 print hm$;left$(cu$,2);spc(2);left$(b$,17);hm$;left$(cu$,2);spc(2);m$;
 875 print hm$;left$(cu$,3);spc(15);left$(b$,4);
 880 print hm$;left$(cu$,3);spc(2);h$;hm$;left$(cu$,3);spc(15);h;" ";
 890 return
+
 900 bg=3:fg=2:t=5:l=15
 910 gosub 980
 920 print bg$(0);:print bg$(3);
@@ -99,6 +109,7 @@
 950 print hm$;left$(cu$,y);spc(2);f$(j,i);hm$;left$(cu$,y);spc(16);f(j,i);" ";
 960 next i
 970 return
+
 980 print hm$;left$(cu$,t);spc(0);
 990 print bg$(fg);:print left$(b$,w);
 1000 print bg$(fg);:print bg$(bg);
@@ -107,6 +118,7 @@
 1030 next i
 1040 print bg$(fg);:print left$(b$,w);
 1050 return
+
 1060 gosub 1600
 1070 d=8
 1080 dim f(4,d+1)
@@ -141,7 +153,7 @@
 1370 next i
 1380 data "strength","vitality","agility","intelligence"
 1390 data "experience","luck","aura","morality","character creation"
-1400 data "2 hand sword", "boardsword", "shortsword"
+1400 data "2 hand sword","broadsword","shortsword"
 1410 data "axe","mace","flail","dagger","gauntlet","armoury"
 1420 data "heavy armour","chain armour","leather armour","heavy robe"
 1430 data "gold helmet","headpiece","shield","torch","accoutrements"
@@ -161,13 +173,17 @@
 1570 m$="":as=65
 1580 b$="":for i=1 to w:b$=b$+" ":next i
 1590 return
-1600 w=40: rem set up details
+
+rem set up details
+1600 w=40
 1610 gosub 4000
 1650 return
+
 1700 in$=""
 1710 get i$:if i$=chr$(13) then return
 1720 if i$>"/" and i$<"[" then in$=in$+i$:print hm$;left$(cu$,y);spc(x);in$;
 1730 goto 1710
+
 4000 bg$(0)=chr$(146):bg$(1)=chr$(18)+chr$(28)
 4010 bg$(2)=chr$(18)+chr$(158):bg$(3)=chr$(18)+chr$(5)
 4020 hm$=chr$(19):cu$="":for i=1 to w:cu$=cu$+chr$(17):next i
