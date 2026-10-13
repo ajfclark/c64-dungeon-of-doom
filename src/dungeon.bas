@@ -1,6 +1,7 @@
 1 rem dungeon generator
 5 gosub 5000
 10 gosub 610
+15 x=rnd(-ti)
 20 print chr$(147):poke 53280,0:poke 53281,0
 30 bg=2:fg=1:t=0:l=3:lw=w-3:gosub 280
 40 print bg$(0);:print bg$(2);
