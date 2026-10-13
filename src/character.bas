@@ -69,7 +69,7 @@ rem Save character
 610 if o(n)>0 and n<23 then m$="you have it sire":return
 620 pr=f(j,k)-br
 630 if h<pr then m$="you cannot afford":return
-640 if of>=pr and y=1 then o(n)=o(n)+p(n):h=h-pr:m$="tis yours'"
+640 if of>=pr and y=1 then o(n)=o(n)+p(n):h=h-pr:m$="tis yours!"
 650 if of<pr and y=1 then m$="offer rejected"
 660 if h<0 then h=0
 670 return
