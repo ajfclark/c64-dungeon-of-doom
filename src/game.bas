@@ -91,7 +91,7 @@
 800 return
 
 810 nf=5:f(1)=0:gosub 440
-820 print hm$;left$(cu$,5);spc(1);"thou has expired!";
+820 print hm$;left$(cu$,5);spc(1);"thou hast expired!";
 830 for j=150 to 1 step -4
 840 gosub 350: gosub 360: gosub 570: gosub 480
 850 next j
