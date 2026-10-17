@@ -25,7 +25,7 @@ rem input handling
 210 if rh=c1 then x=nx:y=ny:gosub 570:nx=ox:ny=oy:f(1)=f(1)-0.03
 220 if rh=c6 then tx=nx:ty=ny:tf=1
 230 if tf=1 then nx=tx:ny=ty
-240 if f(1) > s1*0.8 and int(rnd(1)*8+1)<f(6) then tf=0
+240 if f(1) > s1*.8 and int(rnd(1)*8+1)<f(6) then tf=0
 250 if i$>"" then f(1)=f(1)*0.99
 260 if f(1) < s1 then f(1)=f(1)+(f(2)/1100)
 270 gosub 480
@@ -239,7 +239,6 @@ rem load dungeon
 
 2010 print chr$(147);hm$;left$(cu$,3);spc(0);"prepare hero tape"
 2020 m$=t$(10): gosub 370
-2025 x=rnd(-ti)
 2030 open 1,1,0,"hero"
 2040 input#1,s$
 2050 close 1
@@ -262,6 +261,7 @@ rem load dungeon
 2220 m((i-1)*3+j)=o(16+i)*f(7)
 2230 next j: next i
 2240 if o(16)=1 then lt=20
+2245 x=rnd(-ti)
 2250 return
 
 2260 m$="one moment please": gosub 430
