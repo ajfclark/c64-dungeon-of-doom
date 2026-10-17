@@ -1,5 +1,4 @@
 1   rem character creator
-5   x=rnd(-ti)
 10  gosub 1060
 20  print chr$(147)
 25  poke 53280,0:poke 53281,0
@@ -133,6 +132,9 @@ rem Save character
 1170 for i=1 to d*3
 1180 read o$(i)
 1190 next i
+1195 print "press any key to roll your stats"
+1196 get i$: if i$="" then goto 1196
+1197 print rnd(-ti)
 1200 for i=1 to 8
 1210 f(1,i)=int(rnd(1)*5+1)+2
 1220 next i
