@@ -45,7 +45,7 @@ If you have `make` installed, there's a Makefile provided that will regenerate t
 ### Create disk images
 Back in the day AJ was lucky enough to have a 1541-II drive so he stored the programs on a single disk.
 
-### with cc1541
+#### with cc1541
 
 If the `cc1541` program is installed, you can use that to create a .d64 disk image from the .prg files:
 ```
