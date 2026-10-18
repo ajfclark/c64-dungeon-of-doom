@@ -15,7 +15,7 @@ of the book for free.
 
 Before you can explore a dungeon, you need **at least one saved dungeon level and one saved
 character**. From there, you can then load the `game` program to play the game.  If you need
-help, I suggest you read the [cheat sheets](#cheat-sheets) for help with creating characters
+help, I suggest you read the [docs](#docs) for help with creating characters
 and levels, saving and loading tapes, game controls, and magic.
 
 ## Loading the programs
@@ -57,6 +57,6 @@ The `tapes/` directory contains the program tape images: `character.tap`, `dunge
 
 ## Cheat sheets
 
-* [Character creator](cheatsheets/character.md)
-* [Dungeon creator](cheatsheets/dungeon.md)
-* [Game](cheatsheets/game.md)
+* [Character creator](docs/character.md)
+* [Dungeon generator](docs/dungeon.md)
+* [Game module](docs/game.md)

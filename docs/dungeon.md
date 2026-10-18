@@ -1,4 +1,4 @@
-# Dungeon creator cheat sheet
+# Dungeon generator cheat sheet
 
 `dungeon.bas` creates 15 × 15 dungeon levels for Dungeon of Doom.
 

@@ -1,4 +1,4 @@
-# Game cheat sheet
+# Game module cheat sheet
 
 `game.bas` loads a saved hero and dungeon, then runs Dungeon of Doom.
 
