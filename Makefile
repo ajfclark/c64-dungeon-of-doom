@@ -2,16 +2,18 @@
 
 SRC := $(wildcard src/*.bas)
 PRG := $(patsubst src/%.bas,prg/%.prg,$(SRC))
-D64 := $(patsubst src/%.bas,d64/%.d64,$(SRC))
+D64 := d64/dungeonofdoom.d64
+FILELIST := $(foreach FILE,$(PRG),$(patsubst prg/%.prg,-f % -w $(FILE),$(FILE)))
 
-all: $(D64)
+all: prg
+d64: $(D64)
+prg: $(PRG)
 
 $(PRG): prg/%.prg: src/%.bas
 	petcat -v -w2 -o $@ -- $<
 
-$(D64): d64/%.d64: prg/%.prg
-	FILENAME=$(patsubst d64/%.d64,%,$@)
-	cc1541 -n $$FILENAME -f $$FILENAME -w $< $@
+$(D64): $(PRG)
+	cc1541 -n 'dungeon of doom' $(FILELIST) $@
 
 clean:
-	rm -f $(PRG) $(D64)
+	rm -f prg/*.prg d64/*.d64
