@@ -45,27 +45,22 @@ If you have `make` installed, there's a Makefile provided that will regenerate t
 ### Create disk images
 Back in the day AJ was lucky enough to have a 1541-II drive so he stored the programs on a single disk.
 
-#### with cc1541
+#### with c1541
 
-If the `cc1541` program is installed, you can use that to create a .d64 disk image from the .prg files:
+VICE ships with the c1541 utility. This can create a .d64 disk image from the .prg files:
 ```
-cc1541 -n 'dungeon of doom' -f character -w prg/character.prg -f dungeon -w prg/dungeon.prg -f game -w prg/game.prg d64/dungeonofdoom.d64
+c1541 -format 'dungeon of doom,0' d64 d64/dungeon-of-doom.d64 \
+-write prg/character.prg character \
+-write prg/dungeon.prg dungeon \
+-write prg/game.prg game \
+-list
 ```
 
 If you have `make` installed, the Makefile provided that will regenerate the .d64 image when you call the d64 target with `make d64`
 
-#### with VICE
-
-1. Choose VICE's **File → Create and attach a disk image**. Pick somewhere to save your disk image.
-2. Open `character.bas` in a text editor and copy the entire listing.  Keep the source lowercase; uppercase text can become graphics characters when pasted into VICE.
-3. At the C64's `READY.` prompt, choose VICE's **Edit → Paste**.  Wait for the whole listing to finish entering. If the final line is still waiting at the cursor, press **Return** to submit it.
-4. Type `SAVE"CHARACTER",8` into the `READY` prompt
-6. Wait for the OK response (VICE's warp mode can help here)
-7. Reset VICE
-
-Repeat for the Dungeon Generator and Game Module as DUNGEON and GAME respectively.
-
 ### Creating tape images
+
+#### with VICE
 
 1. Open `character.bas` in a text editor and copy the entire listing.  Keep the source lowercase; uppercase text can become graphics characters when pasted into VICE.
 2. At the C64's `READY.` prompt, choose VICE's **Edit → Paste**.  Wait for the whole listing to finish entering. If the final line is still waiting at the cursor, press **Return** to submit it.
@@ -76,6 +71,19 @@ Repeat for the Dungeon Generator and Game Module as DUNGEON and GAME respectivel
 7. Reset VICE
 
 Repeat for the Dungeon Generator and Game Module as DUNGEON and GAME respectively.
+
+#### with prg2tap
+
+prg2tap is not part of VICE, but can be found here: https://www.luigidifraia.com/software/#PRG_to_TAP_encapsulation_utility
+
+Using this is fairly simple:
+```
+prg2tap prg/character.prg tapes/character.tap
+prg2tap prg/dungeon.prg tapes/dungeon.tap
+prg2tap prg/game.prg tapes/game.tap
+```
+
+If you have `make` installed, the Makefile provided that will regenerate the .tap images when you call the tap target with `make tap`
 
 ## Starting the programs
 
