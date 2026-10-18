@@ -9,4 +9,4 @@ $(PRG): prg/%.prg: src/%.bas
 	petcat -v -w2 -o $@ -- $<
 
 clean:
-	rm -f *.prg *.d64
+	rm -f $(PRG)
