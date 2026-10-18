@@ -1,21 +1,25 @@
 .ONESHELL:
 
 SRC := $(wildcard src/*.bas)
-PRG := $(patsubst src/%.bas,prg/%.prg,$(SRC))
-TAP := $(patsubst src/%.bas,tapes/%.tap,$(SRC))
+PRG := $(SRC:src/%.bas=prg/%.prg)
+TAP := $(SRC:src/%.bas=tapes/%.tap)
 D64 := d64/dungeonofdoom.d64
-FILELIST := $(foreach FILE,$(PRG),$(patsubst prg/%.prg,-f % -w $(FILE),$(FILE)))
+
+CMDWRITE := $(foreach FILE,$(PRG),$(FILE:%=-write % $(FILE:prg/%.prg=%)))
 
 all: prg
+
+prg: $(PRG)
 d64: $(D64)
 tap: $(TAP)
-prg: $(PRG)
 
 $(PRG): prg/%.prg: src/%.bas
 	petcat -v -w2 -o $@ -- $<
 
 $(D64): $(PRG)
-	cc1541 -n 'dungeon of doom' $(FILELIST) $@
+	c1541 -format "dungeon of doom,0" d64 $@ \
+		$(CMDWRITE) \
+		-list
 
 $(TAP): tapes/%.tap: prg/%.prg
 	prg2tap $< $@
