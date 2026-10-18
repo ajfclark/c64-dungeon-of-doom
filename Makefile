@@ -3,11 +3,11 @@
 SRC := $(wildcard src/*.bas)
 PRG := $(SRC:src/%.bas=prg/%.prg)
 TAP := $(SRC:src/%.bas=tapes/%.tap)
-D64 := d64/dungeonofdoom.d64
+D64 := dungeon-of-doom.d64
 
 CMDWRITE := $(foreach FILE,$(PRG),$(FILE:%=-write % $(FILE:prg/%.prg=%)))
 
-all: prg
+all: prg d64
 
 prg: $(PRG)
 d64: $(D64)
@@ -25,4 +25,4 @@ $(TAP): tapes/%.tap: prg/%.prg
 	prg2tap $< $@
 
 clean:
-	rm -f prg/*.prg d64/*.d64
+	rm -f $(PRG) $(D64) $(TAP)

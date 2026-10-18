@@ -1,5 +1,5 @@
 saves/*
 prg/*
-d64/*
+*.d64
 tapes/*
 !/*/.gitkeep
