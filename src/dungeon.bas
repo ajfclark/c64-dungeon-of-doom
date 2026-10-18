@@ -1,4 +1,3 @@
-1 rem dungeon generator
 5 gosub 5000
 10 gosub 610
 15 x=rnd(-ti)
@@ -107,7 +106,10 @@ rem clear data
 780 rem set up the char start
 790 os=96:c0=os+6:w=40:gosub 4000
 800 return
+<<<<<<< HEAD:src/dungeon.bas
 
+=======
+>>>>>>> upstream/master:dungeon.bas
 810 rem read the characters
 820 for i=0 to 7:read a:poke 36352+i,255-a:next i
 830 for i=0 to 95:read a:poke 36400+i,255-a:next i

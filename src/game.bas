@@ -1,4 +1,3 @@
-1 rem game module
 5 gosub 5000:poke 53281,0
 10 gosub 2500
 20 gosub 2010
@@ -80,7 +79,7 @@ rem subroutine here
 650 r(lx,ly)=c0:x=lx:y=ly:gosub 570
 660 r(mx,my)=mt:x=mx:y=my:gosub 570
 670 lx=mx:ly=my:h=0
-680 if abs(dx)<=1 and abs(dy)<=1 and rh<>c7 then h=m*0.5:j=h:gosub 350
+680 if abs(dx)<=1 and abs(dy)<=1 and rh<>c7 then h=m*.5:j=h:gosub 350
 690 if h*12<f(6)+f(3) then return
 700 m$=t$(5):gosub 430:gosub 360
 710 h=h/(3+o(9) + o(10) + o(11) + o(12) + o(13) + o(14))
@@ -108,12 +107,12 @@ rem Death routine
 880 h=f(1)+o(1)+o(2)+o(3)+o(4)+o(5)+o(7)+o(8)+int(rnd(1)*f(6)+1)
 890 if f(3)+f(6)<int(rnd(1)*m+1)+2 then m$=t$(4):ht=0
 900 ms=ms-h:gosub 430
-910 f(1)=f(1)-(h/100):f(5)=f(5)+0.05
+910 f(1)=f(1)-(h/100):f(5)=f(5)+.05
 920 if ms<1 then gosub 940
 930 return
 
 940 dx=255:ms=0:r(mx,my)=c0
-950 f(5)=f(5)+0.1
+950 f(5)=f(5)+.1
 960 m$=t$(6):gosub 430
 970 for j=200 to 150 step -8: gosub 350: gosub 360: next j
 980 gosub 570: return
@@ -131,7 +130,7 @@ rem Death routine
 1085 print bg$(2);
 1090 for j=1 to 5: print hm$;left$(cu$,j);spc(0);left$(b$,w);:next j: gosub 570
 1100 on sl gosub 1140,1190,1220,1280,1300,1390,1130
-1110 f(5)=f(5)+0.2
+1110 f(5)=f(5)+.2
 1120 gosub 430
 1130 return
 
@@ -299,11 +298,11 @@ rem major setup subroutine
 2540 dim w$(11),t$(12)
 2550 dim m(6),d(4,2),t(18)
 2560 data "gr sword","sword","axe","mace","flail","dagger","armour","armour"
-2570 data "armour", "helmet", "headpc."
+2570 data "armour","helmet","headpc."
 2580 for i=1 to 11
 2590 read w$(i)
 2600 next i
-2610 data "a good blow","well hit sire","thy aim is true","missed!","hit thee!!"
+2610 data"a good blow","well hit sire","thy aim is true","missed!","hit thee!!"
 2620 data "the monster is slain","no light","broken thy ","spell exhausted"
 2630 data "press any key","you need experience","exit from this level"
 2640 for i=1 to 12

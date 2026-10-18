@@ -1,3 +1,4 @@
-*.prg
-*.tap
-*.d64
+/saves/*
+!/saves/.gitkeep
+/prg/*
+!/prg/.gitkeep

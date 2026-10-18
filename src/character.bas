@@ -1,4 +1,3 @@
-1   rem character creator
 10  gosub 1060
 20  print chr$(147)
 25  poke 53280,0:poke 53281,0
@@ -175,15 +174,23 @@ rem Save character
 1570 m$="":as=65
 1580 b$="":for i=1 to w:b$=b$+" ":next i
 1590 return
+<<<<<<< HEAD:src/character.bas
 
 rem set up details
 1600 w=40
+=======
+1600 let w=40
+>>>>>>> upstream/master:character.bas
 1610 gosub 4000
 1650 return
 
 1700 in$=""
 1710 get i$:if i$=chr$(13) then return
+<<<<<<< HEAD:src/character.bas
 1720 if i$>"/" and i$<"[" then in$=in$+i$:print hm$;left$(cu$,y);spc(x);in$;
+=======
+1720 ifi$>"/" and i$<"[" then let in$=in$+i$:print hm$;left$(cu$,y);spc(x);in$;
+>>>>>>> upstream/master:character.bas
 1730 goto 1710
 
 4000 bg$(0)=chr$(146):bg$(1)=chr$(18)+chr$(28)
