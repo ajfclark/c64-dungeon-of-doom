@@ -14,25 +14,91 @@ of the book for free.
 ## How to play
 
 Before you can explore a dungeon, you need **at least one saved dungeon level and one saved
-character**. From there, you can then load the `game` program to play the game.  If you need
+character**. From there, you can then load the `game` program to play the game. If you need
 help, I suggest you read the [docs](#docs) for help with creating characters
 and levels, saving and loading tapes, game controls, and magic.
 
-## Loading the programs
+## Entering the programs
 
-Use VICE in **C64 mode**. Start with a fresh or reset C64 for each program, then choose either
-of these two loading methods.
+Use VICE in **C64 mode**. Start with a fresh or reset C64 for each program, then choose any
+of these loading methods.
 
-### Copy and paste the BASIC source
+All methods start the same programs. You still need writable tape images to save your character
+and dungeon and load them into the game. Initialization takes a little time; VICE's warp mode can
+speed up loading, but turn it off before playing.
 
-1. Open `character.bas`, `dungeon.bas`, or `game.bas` in a text editor and copy the entire listing.
-   Keep the source lowercase; uppercase text can become graphics characters when pasted into VICE.
-2. At the C64's `READY.` prompt, choose VICE's **Edit → Paste**.
-   Wait for the whole listing to finish entering. If the final line is still waiting at the cursor,
-   press **Return** to submit it.
-3. Enter `RUN` and press **Return** to start the program.
+### Generating .prg files from .bas files
 
-### Load a tape for a more authentic experience
+VICE ships with the `petcat` utility. This can create a tokenised c64 program file (PRG) from a BASIC listing.
+
+To do so, run the following commands:
+```
+petcat -w3 -o dungeon.prg -- dungeon.bas
+petcat -w3 -o character.prg -- character.bas
+petcat -w3 -o game.prg -- game.bas
+```
+
+These need to be regenerated each time you update the source files.
+
+If you have `make` installed, there's a Makefile provided that will regenerate the .prg files when the .bas files change.
+
+### Create disk images
+Back in the day AJ was lucky enough to have a 1541-II drive so he stored the programs on a single disk.
+
+### with cc1541
+
+If the `cc1541` program is installed, you can use that to create a .d64 disk image from the .prg files:
+```
+cc1541 -n 'dungeon of doom' -f character -w prg/character.prg -f dungeon -w prg/dungeon.prg -f game -w prg/game.prg d64/dungeonofdoom.d64
+```
+
+If you have `make` installed, the Makefile provided that will regenerate the .d64 image when you call the d64 target with `make d64`
+
+#### with VICE
+
+1. Choose VICE's **File → Create and attach a disk image**. Pick somewhere to save your disk image.
+2. Open `character.bas` in a text editor and copy the entire listing.  Keep the source lowercase; uppercase text can become graphics characters when pasted into VICE.
+3. At the C64's `READY.` prompt, choose VICE's **Edit → Paste**.  Wait for the whole listing to finish entering. If the final line is still waiting at the cursor, press **Return** to submit it.
+4. Type `SAVE"CHARACTER",8` into the `READY` prompt
+6. Wait for the OK response (VICE's warp mode can help here)
+7. Reset VICE
+
+Repeat for the Dungeon Generator and Game Module as DUNGEON and GAME respectively.
+
+### Creating tape images
+
+1. Open `character.bas` in a text editor and copy the entire listing.  Keep the source lowercase; uppercase text can become graphics characters when pasted into VICE.
+2. At the C64's `READY.` prompt, choose VICE's **Edit → Paste**.  Wait for the whole listing to finish entering. If the final line is still waiting at the cursor, press **Return** to submit it.
+3. Choose VICE's **File → Create and attach a dataset image**. Pick somewhere to save your tape image.
+4. Type `SAVE"CHARACTER",1` into the `READY` prompt
+5. When prompted to press record on tape, press record on tape in VICE's menu
+6. Wait for the OK response (VICE's warp mode can help here)
+7. Reset VICE
+
+Repeat for the Dungeon Generator and Game Module as DUNGEON and GAME respectively.
+
+## Starting the programs
+
+### Attach the .prg files directly
+
+1. Use VICE's **Smart attach** action to attach the appropriate .prg file.
+2. VICE will issue the correct load command automatically
+3. Wait for loading to finish and `READY.` to appear, then enter `RUN` and press **Return**.
+
+### Load a disk image
+
+1. Use VICE's **Smart attach** action to attach the appropriate .d64 file.
+2. Enter the matching command at the C64's BASIC prompt and press **Return**:
+
+   | Program | Load command |
+   | --- |  --- |
+   | Character creator | `LOAD"CHARACTER",8` |
+   | Dungeon creator | `LOAD"DUNGEON",8` |
+   | Game | `LOAD"GAME",8` |
+
+3. Wait for loading to finish and `READY.` to appear, then enter `RUN` and press **Return**.
+
+### Load a tape image
 
 1. Use VICE's **Attach datasette image** action to attach the program tape.
 2. Enter the matching command at the C64's BASIC prompt and press **Return**:
@@ -46,14 +112,10 @@ of these two loading methods.
 3. When prompted to press Play on tape, select VICE's Datasette **Play** control.
 4. Wait for loading to finish and `READY.` to appear, then enter `RUN` and press **Return**.
 
-Both methods start the same programs. You still need writable tape images to save your character
-and dungeon and load them into the game. Initialization takes a little time; VICE's warp mode can
-speed up loading, but turn it off before playing.
-
 ## Project Structure
 
 The `tapes/` directory contains the program tape images: `character.tap`, `dungeon.tap`, and
-`game.tap`. Use the `saves/` directory for your character, dungeon, and game saves.
+`game.tap`. Use the `saves/` directory for your character, dungeon, and game saves. `prg/` is there for prg files. `d64/` for .d64 images.
 
 ## Cheat sheets
 
