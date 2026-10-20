@@ -5,7 +5,7 @@
 rem start level
 20 print chr$(147):poke 53280,0:poke 53281,0
 30 bg=2:fg=1:t=0:l=3:lw=w-3:gosub 280
-40 print bg$(0);bg$(2);
+40 print bg$(2);
 50 print hm$;left$(cu$, 1);spc(1);"level generator";
 60 print hm$;left$(cu$, 2);spc(1);"this is level:";le;
 70 print hm$;left$(cu$, 3);spc(1);"press h for help"
@@ -20,7 +20,7 @@ rem input handling routine here
 140 if i$="n" and x>1 then x=x-1
 150 if i$="m" and x<15 then x=x+1
 160 if i$>"/" and i$<":" then gosub 230
-170 print bg$(0);bg$(3);
+170 print bg$(3);
 180 print hm$;left$(cu$, y+5);spc(x);chr$(os);
 190 print hm$;left$(cu$, y+5);spc(x);chr$(r(x,y));
 199 rem you can only save if there is an entrence
@@ -106,10 +106,7 @@ rem clear data
 780 rem set up the char start
 790 os=96:c0=os+6:w=40:gosub 4000
 800 return
-<<<<<<< HEAD:src/dungeon.bas
 
-=======
->>>>>>> upstream/master:dungeon.bas
 810 rem read the characters
 820 for i=0 to 7:read a:poke 36352+i,255-a:next i
 830 for i=0 to 95:read a:poke 36400+i,255-a:next i
@@ -137,7 +134,7 @@ rem c64 setup
 4020 hm$=chr$(19):cu$="":for i=1 to w:cu$=cu$+chr$(17):next i
 4030 poke 650,255:return
 
-rem see DOCS.md for a detailed breakdown
+rem see docs/code-explanations.md for a detailed breakdown
 5000 poke 52,128:poke 56,128
 5010 poke 56334,peek(56334) and 254:poke 1,peek(1) and 251
 5020 for i=0 to 2047:poke 34816+i,peek(53248+i):next i

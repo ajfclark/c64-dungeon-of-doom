@@ -69,7 +69,6 @@ rem Save character
 630 if h<pr then m$="you cannot afford":return
 640 if of>=pr and y=1 then o(n)=o(n)+p(n):h=h-pr:m$="tis yours!"
 650 if of<pr and y=1 then m$="offer rejected"
-660 if h<0 then h=0
 670 return
 
 680 y=0
@@ -92,7 +91,7 @@ rem Save character
 830 print hm$;left$(cu$,0);spc(0);f$(j,9)
 840 bg=2:fg=3:t=1:l=2
 850 gosub 980
-860 print bg$(0);bg$(2);
+860 print bg$(2);
 870 print hm$;left$(cu$,2);spc(2);left$(b$,17);hm$;left$(cu$,2);spc(2);m$;
 875 print hm$;left$(cu$,3);spc(15);left$(b$,4);
 880 print hm$;left$(cu$,3);spc(2);h$;hm$;left$(cu$,3);spc(15);h;" ";
@@ -100,7 +99,7 @@ rem Save character
 
 900 bg=3:fg=2:t=5:l=15
 910 gosub 980
-920 print bg$(0);:print bg$(3);
+920 print bg$(3);
 930 for i=1 to 8
 940 y=t+(i-1)*2+1
 945 print hm$;left$(cu$,y);spc(15);left$(b$,5);
@@ -110,7 +109,7 @@ rem Save character
 
 980 print hm$;left$(cu$,t);spc(0);
 990 print bg$(fg);:print left$(b$,w);
-1000 print bg$(fg);:print bg$(bg);
+1000 print bg$(bg);
 1010 for i=1 to l
 1020 print bg$(fg);" ";bg$(bg);left$(b$,w-2);bg$(fg);" ";
 1030 next i
@@ -174,23 +173,15 @@ rem Save character
 1570 m$="":as=65
 1580 b$="":for i=1 to w:b$=b$+" ":next i
 1590 return
-<<<<<<< HEAD:src/character.bas
 
 rem set up details
 1600 w=40
-=======
-1600 let w=40
->>>>>>> upstream/master:character.bas
 1610 gosub 4000
 1650 return
 
 1700 in$=""
 1710 get i$:if i$=chr$(13) then return
-<<<<<<< HEAD:src/character.bas
 1720 if i$>"/" and i$<"[" then in$=in$+i$:print hm$;left$(cu$,y);spc(x);in$;
-=======
-1720 ifi$>"/" and i$<"[" then let in$=in$+i$:print hm$;left$(cu$,y);spc(x);in$;
->>>>>>> upstream/master:character.bas
 1730 goto 1710
 
 4000 bg$(0)=chr$(146):bg$(1)=chr$(18)+chr$(28)

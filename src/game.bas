@@ -182,7 +182,7 @@ rem Death routine
 1540 return
 
 1550 print bg$(2);
-1560 print hm$;left$(cu$,1);spc(0);" thy quest is over! ";
+1560 print hm$;left$(cu$,1);spc(0);" thy quest is over! "
 1570 for i=1 to 18
 1580 j=t(i): gosub 350
 1590 x=nx:y=ny
