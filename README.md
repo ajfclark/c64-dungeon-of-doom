@@ -11,9 +11,31 @@ of the book for free.
 
 * https://usborne.com/browse-books/features/computer-and-coding-books/
 
-The BASIC listings aim to preserve the book's C64 version, including its platform-specific
+## The repository
+
+### main
+
+This branch has AJ's current version of the game.
+
+### as-per-book
+
+The BASIC listings in this branch aim to preserve the book's C64 version, including its platform-specific
 conversions. See [Bugs and possible improvements](IMPROVEMENTS.md) for known limitations,
 transcription corrections, and optional changes to behavior, style, and tooling.
+
+This branch follows [HAnthonyHoyt](https://github.com/HAnthonyHoyt)'s repository closely.
+
+### bug-[issue]
+
+Bugs are documented in the github issues and fixes will be in their own branches.
+
+### ext-[issue]
+
+Extensions suggested in the book will be implemented in different branches so they can be merged in separately.
+
+### feature-[issue]
+
+This like saving to disk will end up in a feature branch.
 
 ## How to play
 
@@ -46,10 +68,8 @@ These need to be regenerated each time you update the source files.
 
 If you have `make` installed, there's a Makefile provided that will regenerate the .prg files when the .bas files change.
 
-### Create disk images
+### Create disk images with c1541
 Back in the day AJ was lucky enough to have a 1541-II drive so he stored the programs on a single disk.
-
-#### with c1541
 
 VICE ships with the c1541 utility. This can create a .d64 disk image from the .prg files:
 ```
@@ -137,5 +157,9 @@ The `tapes/` directory contains the program tape images: `character.tap`, `dunge
 
 ## Credits
 
-Thanks to [ajfclark](https://github.com/ajfclark) for reviewing the C64 listings,
-reporting bugs, and suggesting improvements.
+Thanks to:
+* Les Howarth and Cheryl Evans for their original work.
+* Chris Oxlade for the original code.
+* Usbourne for putting up the PDF free.
+* My dad for getting me interested in computers with this book way back in the 80s.
+* [HAnthonyHoyt](https://github.com/HAnthonyHoyt) for also typing all this in, pointing out inconsistencies and general assistance.
